@@ -1,0 +1,8 @@
+# DuckCartUtility's configuration file
+
+# Enable or Disable the plugin
+plugin-enabled: true
+# Set if the minecart is dropped on the ground when exiting it.
+drop-cart-on-exit: true
+# If true any Monster or Animal (Except Wolves & Ocelots) colliding with a cart will be removed.
+remove-livingentity-on-cart-collide: true
