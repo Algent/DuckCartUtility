@@ -1,7 +1,7 @@
 package eu.algent.DuckCartUtility.Listeners;
 
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.Sign;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Player;
@@ -10,15 +10,15 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.vehicle.*;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
 import eu.algent.DuckCartUtility.DuckCartUtility;
 import eu.algent.DuckCartUtility.Events.VehicleMoveBlockEvent;
 import eu.algent.DuckCartUtility.Utils.CartUtil;
+import eu.algent.DuckCartUtility.Utils.SignUtil;
 
 public class MinecartListener implements Listener {
-    private final DuckCartUtility plugin;
+    private DuckCartUtility plugin;
 
     public MinecartListener(final DuckCartUtility plugin){
         this.plugin = plugin;
@@ -26,14 +26,23 @@ public class MinecartListener implements Listener {
 
     @EventHandler
     public void onVehicleMove(VehicleMoveEvent event) {
+        if (!(event.getVehicle() instanceof Minecart)) return;
         if (CartUtil.hasMovedBlock(event.getFrom(), event.getTo())) {
             plugin.callEvent(new VehicleMoveBlockEvent(event.getVehicle(), event.getFrom(), event.getTo()));
         }
     }
 
     @EventHandler
-    public void onVehicleMoveBlock(VehicleMoveBlockEvent event){
+    public void onVehicleMoveBlock(VehicleMoveBlockEvent event){   
         if (!(event.getVehicle() instanceof Minecart)) return;
+        Minecart minecart = (Minecart) event.getVehicle();
+        if (CartUtil.isOnTrack(minecart) && plugin.getPluginConfig().isSignControlEnabled()) {
+            Block track = minecart.getLocation().getBlock();
+            if (SignUtil.isSign(track.getRelative(0, -2, 0))) {
+                Sign sign = SignUtil.getSignAt(track.getRelative(0, -2, 0));
+                plugin.signControl.signEvent(sign, minecart);
+            }
+        }
     }
 
 
@@ -42,12 +51,7 @@ public class MinecartListener implements Listener {
         if (!(event.getVehicle() instanceof Minecart)) return;
         Minecart minecart = (Minecart) event.getVehicle();
         if (minecart.getDamage() > 40) return;
-        if (plugin.getPuginConfig().isDropOnExit()) {
-            minecart.remove();
-            Location location = minecart.getLocation();
-            location.getWorld().dropItem(location, new ItemStack(Material.MINECART, 1));
-        }
-
+        if (plugin.getPluginConfig().isDropOnExit()) CartUtil.doDropCart(minecart);
     }
 
     @EventHandler(priority = EventPriority.NORMAL)
@@ -57,7 +61,7 @@ public class MinecartListener implements Listener {
             if (event.getEntity() instanceof LivingEntity){
                 LivingEntity livingentity = (LivingEntity) event.getEntity();
                 if (!(livingentity instanceof Player) && !(livingentity instanceof Tameable)){
-                    if (plugin.getPuginConfig().isRemoveLivingEntityCollide()) {
+                    if (plugin.getPluginConfig().isRemoveLivingEntityCollide()) {
                         final Vector velocity = minecart.getVelocity(); 
                         if (velocity.getX() != 0d || velocity.getZ() != 0d){
                             livingentity.remove();

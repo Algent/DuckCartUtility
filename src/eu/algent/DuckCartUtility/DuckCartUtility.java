@@ -7,13 +7,15 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import eu.algent.DuckCartUtility.Config.ConfigCore;
 import eu.algent.DuckCartUtility.Listeners.MinecartListener;
+import eu.algent.DuckCartUtility.Signs.SignControl;
 
 public class DuckCartUtility extends JavaPlugin {
-
     private ConfigCore configuration;
+    public SignControl signControl;
 
     public void onEnable(){
         configuration = new ConfigCore(this);
+        signControl = new SignControl(this);
         if (!(configuration.isPluginEnabled())) this.setEnabled(false);
         else {
             //Events
@@ -28,7 +30,7 @@ public class DuckCartUtility extends JavaPlugin {
 
     }
 
-    public ConfigCore getPuginConfig() {
+    public ConfigCore getPluginConfig() {
         return configuration;
     }
     

@@ -4,5 +4,11 @@
 plugin-enabled: true
 # Set if the minecart is dropped on the ground when exiting it.
 drop-cart-on-exit: true
-# If true any Monster or Animal (Except Wolves & Ocelots) colliding with a cart will be removed.
+# Any Monster or Animal (Except Wolves & Ocelots) colliding with a cart will be removed.
 remove-livingentity-on-cart-collide: true
+#
+sign-control:
+  enabled: true
+  eject-sign:
+    enabled: true
+    max-distance: 20.0

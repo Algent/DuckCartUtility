@@ -25,5 +25,17 @@ public class ConfigCore {
     public boolean isRemoveLivingEntityCollide() {
         return plugin.getConfig().getBoolean("remove-livingentity-on-cart-collide", true);
     }
+    
+    public boolean isSignControlEnabled() {
+        return plugin.getConfig().getBoolean("sign-control.enabled", true);
+    }
+    
+    public boolean isEjectSignEnabled() {
+        return plugin.getConfig().getBoolean("sign-control.eject-sign.enabled", true);
+    }
+    
+    public double getMaxEjectDistance() {
+        return plugin.getConfig().getDouble("sign-control.eject-sign.max-distance", 20.0);
+    }
 
 }
