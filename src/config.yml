@@ -16,5 +16,7 @@ sign-control:
     enabled: true
     # Maximum distance a player can be ejected. Attempts to go further are normalized.
     max-distance: 20.0
-    # Are empty minecarts ejected ? If so they are dropped on ground.
+    # If empty minecarts are ejected.
     eject-empty-cart: true
+    # If storagecarts are ejected.
+    eject-storage-cart: true

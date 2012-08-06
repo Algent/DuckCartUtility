@@ -5,6 +5,7 @@ import org.bukkit.block.Sign;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Minecart;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.StorageMinecart;
 import org.bukkit.util.Vector;
 
 import eu.algent.DuckCartUtility.DuckCartUtility;
@@ -29,6 +30,9 @@ public class EjectSign {
         if (!plugin.getPluginConfig().isEjectSignEnabled()) return;
         Boolean empty = minecart.isEmpty();
         if (empty && !plugin.getPluginConfig().isEjectSignEjectEmptyCart()) return;
+        if (minecart instanceof StorageMinecart) {
+            if (!plugin.getPluginConfig().isEjectSignEjectStorageCart()) return;
+        }
 
         // Reading Optional Condition
         String[] conditionLine = sign.getLine(3).split(":");
@@ -70,6 +74,8 @@ public class EjectSign {
         destination = destination.add(0.5, 0.7, 0.5).add(offset);
         destination.setYaw(yaw + 180);
         destination.setPitch(pitch);
+        
+        if(!CartUtil.isTpSafe(destination)) destination = minecart.getLocation();
 
         // Ejecting
         minecart.teleport(destination);
