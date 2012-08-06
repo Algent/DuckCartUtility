@@ -12,11 +12,11 @@ import eu.algent.DuckCartUtility.Utils.CartUtil;
 import eu.algent.DuckCartUtility.Utils.StringUtil;
 
 /**
- *  sign syntax:
- *  [Eject]
- *   x,y,z     (offset from cart)
- *   yaw,pitch or yaw
- *   ph:item      (playerhand:item)
+ *  Eject Sign:
+ *  1st Line: [Eject]
+ *  2nd Line:  x,y,z            (teleport destination in offset from cart)
+ *  3rd Line: yaw,pitch or yaw  (optional: default yaw is ingame north)
+ *  4rd Line: ph:itemid         (optional: Only eject passenger if he have a specificic item in hand)
  */
 public class EjectSign {
     DuckCartUtility plugin;
@@ -27,13 +27,15 @@ public class EjectSign {
 
     public void execute(Sign sign, Minecart minecart) {
         if (!plugin.getPluginConfig().isEjectSignEnabled()) return;
+        Boolean empty = minecart.isEmpty();
+        if (empty && !plugin.getPluginConfig().isEjectSignEjectEmptyCart()) return;
 
         // Reading Optional Condition
         String[] conditionLine = sign.getLine(3).split(":");
         int idWanted = 0, idInHand = 0;
         if (conditionLine.length == 2 && conditionLine[0].equalsIgnoreCase("ph")) {
             idWanted = StringUtil.parseIntSafe(conditionLine[1], 0);
-            if (!minecart.isEmpty() && minecart.getPassenger() instanceof Player) {
+            if (!empty && minecart.getPassenger() instanceof Player) {
                 idInHand = ((Player) minecart.getPassenger()).getItemInHand().getTypeId();
                 if (idWanted != idInHand) return;
             }
@@ -71,7 +73,7 @@ public class EjectSign {
 
         // Ejecting
         minecart.teleport(destination);
-        if (!minecart.isEmpty()) {
+        if (!empty) {
             Entity entity = minecart.getPassenger();
             entity.teleport(destination);
             minecart.eject();

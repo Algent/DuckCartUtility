@@ -37,5 +37,9 @@ public class ConfigCore {
     public double getMaxEjectDistance() {
         return plugin.getConfig().getDouble("sign-control.eject-sign.max-distance", 20.0);
     }
+    
+    public boolean isEjectSignEjectEmptyCart() {
+        return plugin.getConfig().getBoolean("sign-control.eject-sign.eject-empty-cart", true);
+    }
 
 }

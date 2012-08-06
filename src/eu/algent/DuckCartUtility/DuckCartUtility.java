@@ -15,9 +15,9 @@ public class DuckCartUtility extends JavaPlugin {
 
     public void onEnable(){
         configuration = new ConfigCore(this);
-        signControl = new SignControl(this);
         if (!(configuration.isPluginEnabled())) this.setEnabled(false);
         else {
+            signControl = new SignControl(this);
             //Events
             final PluginManager pm = getServer().getPluginManager();
             pm.registerEvents(new MinecartListener(this), this);
@@ -33,7 +33,7 @@ public class DuckCartUtility extends JavaPlugin {
     public ConfigCore getPluginConfig() {
         return configuration;
     }
-    
+
     public void callEvent(Event event) {
         Bukkit.getServer().getPluginManager().callEvent(event);
     }

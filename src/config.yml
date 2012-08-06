@@ -1,14 +1,20 @@
 # DuckCartUtility's configuration file
 
-# Enable or Disable the plugin
+# Enable the plugin.
 plugin-enabled: true
-# Set if the minecart is dropped on the ground when exiting it.
+# If minecarts are dropped on the ground when exiting them.
 drop-cart-on-exit: true
-# Any Monster or Animal (Except Wolves & Ocelots) colliding with a cart will be removed.
+# Any Monster or Animal (except wolves & ocelots) colliding with a cart will be removed.
 remove-livingentity-on-cart-collide: true
-#
+# Sign control configuration.
 sign-control:
+  # Enable the whole sign-control feature.
   enabled: true
+  # Eject sign
   eject-sign:
+    # Enable eject sign.
     enabled: true
+    # Maximum distance a player can be ejected. Attempts to go further are normalized.
     max-distance: 20.0
+    # Are empty minecarts ejected ? If so they are dropped on ground.
+    eject-empty-cart: true
