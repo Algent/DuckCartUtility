@@ -4,6 +4,8 @@
 plugin-enabled: true
 # If minecarts are dropped on the ground when exiting them.
 drop-cart-on-exit: true
+# Disallow everything except players from entering Minecart.
+deny-cart-entry-to-non-player: true
 # Any Monster or Animal (except wolves & ocelots) colliding with a cart will be removed.
 remove-livingentity-on-cart-collide: true
 # Sign control configuration.

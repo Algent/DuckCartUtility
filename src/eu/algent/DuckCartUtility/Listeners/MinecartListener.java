@@ -45,6 +45,12 @@ public class MinecartListener implements Listener {
         }
     }
 
+    @EventHandler
+    public void onVehicleEnter(VehicleEnterEvent event) {
+        if (!(event.getEntered() instanceof Player)) {
+            if (!plugin.getPluginConfig().canNonPlayerEnterCart()) event.setCancelled(true);
+        }
+    }
 
     @EventHandler
     public void onVehicleExit(VehicleExitEvent event){
