@@ -47,7 +47,7 @@ public class ConfigCore {
     }
 
     public boolean isEjectSignEjectStorageCart() {
-        return plugin.getConfig().getBoolean("sign-control.eject-sign.eject-storage-cart", true);
+        return plugin.getConfig().getBoolean("sign-control.eject-sign.eject-storage-cart", false);
     }
 
 }

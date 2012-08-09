@@ -21,4 +21,4 @@ sign-control:
     # If empty minecarts are ejected.
     eject-empty-cart: true
     # If storagecarts are ejected.
-    eject-storage-cart: true
+    eject-storage-cart: false
