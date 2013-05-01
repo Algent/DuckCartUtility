@@ -6,3 +6,7 @@
 
 # Build files
 /bin
+/target
+
+# Cloud9
+/.c9revisions

@@ -1,0 +1,5 @@
+name: ${project.name}
+main: ${project.groupId}.${project.artifactId}.${project.name}
+version: ${project.version}
+author: Algent
+website: ${project.url}

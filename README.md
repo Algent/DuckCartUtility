@@ -1,4 +1,4 @@
 DuckCartUtility
 ===========
 
-A MineCart Bukkit Plugin
+A MineCart Bukkit Plugin.
