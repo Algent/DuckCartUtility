@@ -3,8 +3,8 @@ package eu.algent.DuckCartUtility.Utils;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Minecart;
-import org.bukkit.entity.PoweredMinecart;
-import org.bukkit.entity.StorageMinecart;
+import org.bukkit.entity.minecart.StorageMinecart;
+import org.bukkit.entity.minecart.PoweredMinecart;
 import org.bukkit.inventory.ItemStack;
 
 public class CartUtil {
