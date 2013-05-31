@@ -26,6 +26,8 @@ sign-control:
 wand:
   enabled: true
   wand-set: true
+  # Warning, Data wand is untested, potentially unsafe
+  wand-data: false
   wand-offset: true
   wand-toggle: true
   wand-reset: true

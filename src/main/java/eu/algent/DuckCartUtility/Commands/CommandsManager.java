@@ -9,7 +9,12 @@ import org.bukkit.entity.Player;
 import eu.algent.DuckCartUtility.DuckCartUtility;
 
 public class CommandsManager implements CommandExecutor{
+    DuckCartUtility plugin;
+    Wand wand;
+
     public CommandsManager(DuckCartUtility plugin) {
+        this.plugin = plugin;
+        wand = new Wand(plugin);
     }
 
     @Override
@@ -17,11 +22,14 @@ public class CommandsManager implements CommandExecutor{
         if (args.length == 0) return false;
 
         // "wand" Command
-        if (args[0].equalsIgnoreCase("wand")) {
+        if (args[0].equalsIgnoreCase("wand") && plugin.getPluginConfig().isWandEnabled()) {
             if (sender instanceof Player)
-                Wand.execute((Player) sender, args);
+                wand.execute((Player) sender, args);
             else
                 sender.sendMessage(ChatColor.RED + "DuckCart's Wand is player only.");
+        }
+        else {
+            return false;
         }
         return true;
     }

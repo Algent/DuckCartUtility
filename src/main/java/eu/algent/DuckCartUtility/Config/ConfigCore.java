@@ -60,6 +60,10 @@ public class ConfigCore {
         return plugin.getConfig().getBoolean("wand.wand-set", true);
     }
 
+    public boolean isWandDataEnabled() {
+        return plugin.getConfig().getBoolean("wand.wand-data", false);
+    }
+
     public boolean isWandOffsetEnabled() {
         return plugin.getConfig().getBoolean("wand.wand-offset", true);
     }

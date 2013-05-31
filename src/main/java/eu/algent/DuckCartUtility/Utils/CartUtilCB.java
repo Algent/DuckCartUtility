@@ -46,6 +46,11 @@ public class CartUtilCB {
         minecartAbs.l(data);
     }
 
+    public static void setData(Minecart minecart, Integer data) {
+        EntityMinecartAbstract minecartAbs = (EntityMinecartAbstract) ((CraftEntity) minecart).getHandle();
+        minecartAbs.l(data);
+    }
+
     public static void setBlockOffset(Minecart minecart, Integer offset) {
         EntityMinecartAbstract minecartAbs = (EntityMinecartAbstract) ((CraftEntity) minecart).getHandle();
         minecartAbs.m(offset);

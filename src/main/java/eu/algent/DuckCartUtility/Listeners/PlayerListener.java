@@ -27,7 +27,7 @@ public class PlayerListener implements Listener {
         // Check if Sneaking
         if (!player.isSneaking()) return;
 
-        if (PlayerUtil.isWandEnabled(player)) {
+        if (PlayerUtil.isWandEnabled(player) && plugin.getPluginConfig().isWandEnabled()) {
             if (!plugin.getPluginConfig().isSpecialCartsAllowed() &&
                     !CartUtil.isNormalCart(minecart))
                 return;
@@ -35,6 +35,9 @@ public class PlayerListener implements Listener {
             String mode = PlayerUtil.getWandState(player);
             if(mode.equals("set") && plugin.getPluginConfig().isWandSetEnabled()) {
                 WandUtil.wandSet(minecart, player);
+            }
+            else if(mode.equals("data") && plugin.getPluginConfig().isWandDataEnabled()) {
+                WandUtil.wandData(minecart, player);
             }
             else if(mode.equals("offset") && plugin.getPluginConfig().isWandOffsetEnabled()) {
                 WandUtil.wandOffset(minecart, player);

@@ -6,5 +6,35 @@ website: ${project.url}
 commands:
   duckcart:
     description: DuckCartUtility's master command.
-    usage: /<command> <args>
+    usage: /<command> <wand> <mode>
     aliases: ["dc"]
+    permission: duckcartutility.commands
+    permission-message: You don't have <permission> permission node.
+permissions:
+  duckcartutility.wand.*:
+    description: Give access to every wand modes.
+    children:
+      duckcartutility.wand.set: true
+      duckcartutility.wand.data: true
+      duckcartutility.wand.offset: true
+      duckcartutility.wand.toggle: true
+      duckcartutility.wand.reset: true
+      duckcartutility.wand.info: true
+  duckcartutility.wand.set:
+    description: Allow you tu use the set wand.
+    default: op
+  duckcartutility.wand.data:
+    description: Allow you tu use the data wand.
+    default: op
+  duckcartutility.wand.offset:
+    description: Allow you tu use the offset wand.
+    default: op
+  duckcartutility.wand.toggle:
+    description: Allow you tu use the toggle wand.
+    default: op
+  duckcartutility.wand.reset:
+    description: Allow you tu use the reset wand.
+    default: op
+  duckcartutility.wand.info:
+    description: Allow you tu use the info wand.
+    default: op

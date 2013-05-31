@@ -7,7 +7,7 @@ import eu.algent.DuckCartUtility.DuckCartUtility;
 
 public class SignControl {
     DuckCartUtility plugin;
-    public EjectSign ejectSign;
+    EjectSign ejectSign;
 
     public SignControl(DuckCartUtility plugin) {
         this.plugin = plugin;
