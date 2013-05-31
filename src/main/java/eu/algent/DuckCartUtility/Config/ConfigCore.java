@@ -30,6 +30,7 @@ public class ConfigCore {
         return plugin.getConfig().getBoolean("remove-livingentity-on-cart-collide", true);
     }
 
+    // Sign Control
     public boolean isSignControlEnabled() {
         return plugin.getConfig().getBoolean("sign-control.enabled", true);
     }
@@ -50,4 +51,32 @@ public class ConfigCore {
         return plugin.getConfig().getBoolean("sign-control.eject-sign.eject-storage-cart", false);
     }
 
+    // Wand
+    public boolean isWandEnabled() {
+        return plugin.getConfig().getBoolean("wand.enabled", true);
+    }
+
+    public boolean isWandSetEnabled() {
+        return plugin.getConfig().getBoolean("wand.wand-set", true);
+    }
+
+    public boolean isWandOffsetEnabled() {
+        return plugin.getConfig().getBoolean("wand.wand-offset", true);
+    }
+
+    public boolean isWandToggleEnabled() {
+        return plugin.getConfig().getBoolean("wand.wand-toggle", true);
+    }
+
+    public boolean isWandResetEnabled() {
+        return plugin.getConfig().getBoolean("wand.wand-reset", true);
+    }
+
+    public boolean isWandInfoEnabled() {
+        return plugin.getConfig().getBoolean("wand.wand-info", true);
+    }
+
+    public boolean isSpecialCartsAllowed() {
+        return plugin.getConfig().getBoolean("allow-special-carts-customization", false);
+    }
 }

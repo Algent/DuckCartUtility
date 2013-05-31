@@ -74,7 +74,7 @@ public class EjectSign {
         destination = destination.add(0.5, 0.7, 0.5).add(offset);
         destination.setYaw(yaw + 180);
         destination.setPitch(pitch);
-        
+
         if(!CartUtil.isTpSafe(destination)) destination = minecart.getLocation();
 
         // Ejecting

@@ -20,7 +20,7 @@ import eu.algent.DuckCartUtility.Utils.SignUtil;
 public class MinecartListener implements Listener {
     private DuckCartUtility plugin;
 
-    public MinecartListener(final DuckCartUtility plugin){
+    public MinecartListener(DuckCartUtility plugin){
         this.plugin = plugin;
     }
 
@@ -53,7 +53,8 @@ public class MinecartListener implements Listener {
     }
 
     @EventHandler
-    public void onVehicleExit(VehicleExitEvent event){
+    public void onVehicleExit(VehicleExitEvent event) {
+        plugin.getLogger().info("VehicleExitEvent");
         if (!(event.getVehicle() instanceof Minecart)) return;
         Minecart minecart = (Minecart) event.getVehicle();
         if (minecart.getDamage() > 40) return;

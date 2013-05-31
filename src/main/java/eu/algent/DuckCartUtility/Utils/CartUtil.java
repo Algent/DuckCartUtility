@@ -1,7 +1,9 @@
 package eu.algent.DuckCartUtility.Utils;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Minecart;
 import org.bukkit.entity.minecart.StorageMinecart;
 import org.bukkit.entity.minecart.PoweredMinecart;
@@ -21,7 +23,8 @@ public class CartUtil {
     public static Boolean isTrack(Material material) {
         return (material == Material.RAILS 
                 || material == Material.POWERED_RAIL 
-                || material == Material.DETECTOR_RAIL);
+                || material == Material.DETECTOR_RAIL
+                || material == Material.ACTIVATOR_RAIL);
     }
 
     public static Boolean isTrack(Location location) {
@@ -34,6 +37,7 @@ public class CartUtil {
 
     public static void doDropCart(Minecart minecart) {
         Location location = minecart.getLocation();
+        Bukkit.getLogger().info("doDropCart");
 
         if (minecart instanceof StorageMinecart) {
             StorageMinecart storageCart = (StorageMinecart) minecart;
@@ -58,5 +62,12 @@ public class CartUtil {
 
     public static Boolean isTpSafe(Location destination) {
         return (destination.getBlock().isEmpty() && destination.getBlock().getRelative(0, 1, 0).isEmpty());
+    }
+
+    public static Boolean isNormalCart(Minecart minecart) {
+        if (minecart.getType() == EntityType.MINECART)
+            return true;
+        else
+            return false;
     }
 }

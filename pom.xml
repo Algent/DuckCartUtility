@@ -55,7 +55,14 @@
 			<groupId>org.bukkit</groupId>
 			<artifactId>bukkit</artifactId>
             <!-- Bukkit API Version -->
-			<version>1.5.1-R0.2</version>
+			<version>1.5.2-R0.2-SNAPSHOT</version>
+		</dependency>
+		<!-- CraftBukkit -->
+		<dependency>
+			<groupId>org.bukkit</groupId>
+			<artifactId>craftbukkit</artifactId>
+            <!-- Bukkit API Version -->
+			<version>1.5.2-R0.2-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 </project>

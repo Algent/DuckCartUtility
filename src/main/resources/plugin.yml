@@ -3,3 +3,8 @@ main: ${project.groupId}.${project.artifactId}.${project.name}
 version: ${project.version}
 author: Algent
 website: ${project.url}
+commands:
+  duckcart:
+    description: DuckCartUtility's master command.
+    usage: /<command> <args>
+    aliases: ["dc"]

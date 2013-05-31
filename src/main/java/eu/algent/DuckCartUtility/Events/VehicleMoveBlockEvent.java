@@ -6,8 +6,8 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.vehicle.VehicleEvent;
 
 /**
-* Raised when a vehicle moves to a new Block
-*/
+ * Raised when a vehicle moves to a new Block
+ */
 public class VehicleMoveBlockEvent extends VehicleEvent{
     private static final HandlerList handlers = new HandlerList();
     private final Location from;
@@ -21,19 +21,19 @@ public class VehicleMoveBlockEvent extends VehicleEvent{
     }
 
     /**
-* Get the previous position.
-*
-* @return Old position.
-*/
+     * Get the previous position.
+     *
+     * @return Old position.
+     */
     public Location getFrom() {
         return from;
     }
 
     /**
-* Get the next position.
-* Equal current vehicle Location
-* @return New position.
-*/
+     * Get the next position.
+     * Equal current vehicle Location
+     * @return New position.
+     */
     public Location getTo() {
         return to;
     }

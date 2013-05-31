@@ -22,3 +22,13 @@ sign-control:
     eject-empty-cart: true
     # If storagecarts are ejected.
     eject-storage-cart: false
+# minecart customizer wand
+wand:
+  enabled: true
+  wand-set: true
+  wand-offset: true
+  wand-toggle: true
+  wand-reset: true
+  wand-info: true
+# allow customization of non-standard minecarts
+allow-special-carts-customization: false

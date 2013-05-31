@@ -5,8 +5,10 @@ import org.bukkit.event.Event;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import eu.algent.DuckCartUtility.Commands.CommandsManager;
 import eu.algent.DuckCartUtility.Config.ConfigCore;
 import eu.algent.DuckCartUtility.Listeners.MinecartListener;
+import eu.algent.DuckCartUtility.Listeners.PlayerListener;
 import eu.algent.DuckCartUtility.Signs.SignControl;
 
 public class DuckCartUtility extends JavaPlugin {
@@ -18,9 +20,12 @@ public class DuckCartUtility extends JavaPlugin {
         if (!(configuration.isPluginEnabled())) this.setEnabled(false);
         else {
             signControl = new SignControl(this);
-            //Events
+            //Events Listener
             final PluginManager pm = getServer().getPluginManager();
             pm.registerEvents(new MinecartListener(this), this);
+            pm.registerEvents(new PlayerListener(this), this);
+            // Commands Listener
+            getCommand("duckcart").setExecutor(new CommandsManager(this));
             getLogger().info(getName() + " has been enabled");
         }
     }
@@ -37,5 +42,4 @@ public class DuckCartUtility extends JavaPlugin {
     public void callEvent(Event event) {
         Bukkit.getServer().getPluginManager().callEvent(event);
     }
-
 }
